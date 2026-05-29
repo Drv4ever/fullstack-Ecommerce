@@ -1,0 +1,378 @@
+/* --- 1. GLOBAL STYLES & FONTS --- */
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* --- 2. THE TICKER / ANIMATION BAR --- */
+.animation-bar {
+  width: 100%;
+  background-color: #fafafa;
+  color: #555555;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.marquee-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: seamless-scroll 20s linear infinite;
+}
+
+@keyframes seamless-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- 3. DESKTOP NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  margin-left: 2rem;
+  gap: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+
+/* --- SEARCH BAR --- */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-bar input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(240, 240, 240);
+}
+
+.search-bar input:focus {
+  outline: none;
+  background-color: #fff;
+  border: 1px solid #007bff;
+}
+
+.search-bar button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+/* --- AUTH BUTTONS --- */
+.Login,
+.SignUp {
+  display: flex;
+  background-color: #fafafa;
+}
+
+.Login button,
+.SignUp button {
+  padding: 0.5rem 1rem;
+  background-color: #fafafa;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.Login button:hover,
+.SignUp button:hover {
+  background-color: #c5c5c5;
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* --- 4. PRODUCT GRID & CARDS --- */
+.product-list,
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-card {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #828282;
+  border-radius: 4px;
+  padding: 1rem;
+  width: 200px;
+  text-align: center;
+  color: #000000;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.product-card h3 {
+  font-size: 18px;
+  margin: 0.5rem 0;
+}
+
+.product-card p {
+  font-size: 16px;
+  color: #262626;
+  margin: 0.5rem 0;
+}
+
+.product-card button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.product-card button:hover {
+  background-color: #0056b3;
+}
+
+/* --- 5. 📱 MOBILE RESPONSIVE (768px or less) --- */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    order: 2;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    order: 1;
+    flex: 1;
+  }
+
+  .navContent {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #f8f8f8;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    gap: 1.5rem;
+    margin-left: 0;
+    z-index: 100;
+  }
+
+  .navContent.active {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.5rem 0;
+  }
+
+  .search-bar {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .search-bar input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .search-bar button {
+    width: 100%;
+  }
+
+  .Login,
+  .SignUp {
+    order: 3;
+    margin: 0 0.5rem;
+  }
+
+  .Login button,
+  .SignUp button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .product-grid {
+    padding: 10px;
+  }
+
+  .product-card {
+    width: 150px;
+    padding: 0.75rem;
+  }
+
+  .product-card h3 {
+    font-size: 14px;
+  }
+
+  .product-card p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .hamburger {
+    font-size: 20px;
+  }
+
+  .product-card {
+    width: 120px;
+  }
+
+  .Login button,
+  .SignUp button {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+.product-detail-page {
+  padding: 20px;
+}
+
+.product-detail-card {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 24px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.detail-image {
+  flex: 1 1 320px;
+  min-width: 260px;
+  max-width: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.detail-info {
+  flex: 2 1 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-info h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.detail-price {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #b12704;
+}
+
+.detail-description {
+  margin: 0;
+  line-height: 1.7;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .product-detail-card {
+    flex-direction: column;
+  }
+
+  .detail-image {
+    max-width: 100%;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-color: #555555;
+}
