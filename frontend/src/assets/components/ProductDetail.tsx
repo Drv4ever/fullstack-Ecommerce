@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 interface ProductDetailProps {
-  id: number;
+  _id: string;
   title: string;
   price: number;
   description: string;
@@ -15,8 +15,20 @@ export const ProductDetail = () => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => res.json())
+    if (!id) {
+      setLoading(false);
+      return;
+    }
+
+    fetch(`http://localhost:3000/api/products/${id}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(
+            `Failed to fetch product with id ${id}: ${res.status}`,
+          );
+        }
+        return res.json();
+      })
       .then((data: ProductDetailProps) => {
         setProduct(data);
         setLoading(false);
@@ -48,12 +60,15 @@ export const ProductDetail = () => {
           <p>
             <strong>Category:</strong> {product.category}
           </p>
+          <p>
+            <strong>Route id:</strong> {id}
+          </p>
+          <p>
+            <strong>Document _id:</strong> {product._id}
+          </p>
         </div>
       </div>
       <a href="/">Go back</a>
     </div>
   );
 };
-
-
-

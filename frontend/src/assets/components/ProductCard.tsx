@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 interface ProductCardProps {
   data: {
+    _id: string;
     image: string;
     title: string;
     price: number;
-    id: number;
   };
   handleAddToCart: () => void;
 }
@@ -12,7 +12,7 @@ interface ProductCardProps {
 function ProductCard({ data, handleAddToCart }: ProductCardProps) {
   return (
     <div className="product-card">
-      <Link to={`/product/${data.id}`} className="product-card-link">
+      <Link to={`/product/${data._id}`} className="product-card-link">
         <img src={data.image} alt={data.title} className="product-image" />
       </Link>
 

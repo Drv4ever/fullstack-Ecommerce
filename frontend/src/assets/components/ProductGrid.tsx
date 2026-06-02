@@ -2,7 +2,7 @@ import ProductCard from "./ProductCard";
 
 interface ProductGridProps {
   products: {
-    id: number;
+    _id: string;
     image: string;
     title: string;
     price: number;
@@ -15,7 +15,7 @@ function ProductGrid({ products, handleAddToCart }: ProductGridProps) {
     <div className="product-grid">
       {products.map((product) => (
         <ProductCard
-          key={product.id}
+          key={product._id}
           data={product}
           handleAddToCart={handleAddToCart}
         />
